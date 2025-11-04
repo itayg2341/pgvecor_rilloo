@@ -1,0 +1,233 @@
+{
+  "files": [
+    "bitutils.c",
+    "bitutils.h",
+    "bitvec.c",
+    "bitvec.h",
+    "halfutils.c",
+    "halfutils.h",
+    "halfvec.c",
+    "halfvec.h",
+    "hnsw.c",
+    "hnsw.h",
+    "hnswbuild.c",
+    "hnswinsert.c",
+    "hnswscan.c",
+    "hnswutils.c",
+    "hnswvacuum.c",
+    "ivfbuild.c",
+    "ivfflat.c",
+    "ivfflat.h",
+    "ivfinsert.c",
+    "ivfkmeans.c",
+    "ivfscan.c",
+    "ivfutils.c",
+    "ivfvacuum.c",
+    "sparsevec.c",
+    "sparsevec.h",
+    "vector.c",
+    "vector.h"
+  ],
+  "dependencies": {
+    "ivfutils.c": [
+      "bitvec.h",
+      "halfutils.h",
+      "halfvec.h",
+      "ivfflat.h"
+    ],
+    "hnswutils.c": [
+      "hnsw.h",
+      "sparsevec.h"
+    ],
+    "ivfscan.c": [
+      "ivfflat.h"
+    ],
+    "ivfvacuum.c": [
+      "ivfflat.h"
+    ],
+    "hnswscan.c": [
+      "hnsw.h"
+    ],
+    "bitutils.c": [
+      "bitutils.h",
+      "halfvec.h"
+    ],
+    "bitvec.c": [
+      "bitutils.h",
+      "bitvec.h",
+      "vector.h"
+    ],
+    "halfutils.c": [
+      "halfutils.h",
+      "halfvec.h"
+    ],
+    "ivfflat.c": [
+      "ivfflat.h"
+    ],
+    "ivfbuild.c": [
+      "bitvec.h",
+      "halfvec.h",
+      "ivfflat.h",
+      "vector.h"
+    ],
+    "ivfkmeans.c": [
+      "bitvec.h",
+      "halfutils.h",
+      "halfvec.h",
+      "ivfflat.h",
+      "vector.h"
+    ],
+    "hnswbuild.c": [
+      "hnsw.h"
+    ],
+    "hnsw.c": [
+      "hnsw.h"
+    ],
+    "vector.c": [
+      "bitutils.h",
+      "bitvec.h",
+      "halfutils.h",
+      "halfvec.h",
+      "hnsw.h",
+      "ivfflat.h",
+      "sparsevec.h",
+      "vector.h"
+    ],
+    "ivfflat.h": [
+      "vector.h"
+    ],
+    "halfvec.c": [
+      "bitvec.h",
+      "halfutils.h",
+      "halfvec.h",
+      "sparsevec.h",
+      "vector.h"
+    ],
+    "ivfinsert.c": [
+      "ivfflat.h"
+    ],
+    "hnswvacuum.c": [
+      "hnsw.h"
+    ],
+    "halfutils.h": [
+      "halfvec.h"
+    ],
+    "hnswinsert.c": [
+      "hnsw.h"
+    ],
+    "hnsw.h": [
+      "vector.h"
+    ],
+    "sparsevec.c": [
+      "halfutils.h",
+      "halfvec.h",
+      "sparsevec.h",
+      "vector.h"
+    ]
+  },
+  "dependents": {
+    "bitvec.h": [
+      "bitvec.c",
+      "halfvec.c",
+      "ivfbuild.c",
+      "ivfkmeans.c",
+      "ivfutils.c",
+      "vector.c"
+    ],
+    "halfutils.h": [
+      "halfutils.c",
+      "halfvec.c",
+      "ivfkmeans.c",
+      "ivfutils.c",
+      "sparsevec.c",
+      "vector.c"
+    ],
+    "halfvec.h": [
+      "bitutils.c",
+      "halfutils.c",
+      "halfutils.h",
+      "halfvec.c",
+      "ivfbuild.c",
+      "ivfkmeans.c",
+      "ivfutils.c",
+      "sparsevec.c",
+      "vector.c"
+    ],
+    "ivfflat.h": [
+      "ivfbuild.c",
+      "ivfflat.c",
+      "ivfinsert.c",
+      "ivfkmeans.c",
+      "ivfscan.c",
+      "ivfutils.c",
+      "ivfvacuum.c",
+      "vector.c"
+    ],
+    "hnsw.h": [
+      "hnsw.c",
+      "hnswbuild.c",
+      "hnswinsert.c",
+      "hnswscan.c",
+      "hnswutils.c",
+      "hnswvacuum.c",
+      "vector.c"
+    ],
+    "sparsevec.h": [
+      "halfvec.c",
+      "hnswutils.c",
+      "sparsevec.c",
+      "vector.c"
+    ],
+    "bitutils.h": [
+      "bitutils.c",
+      "bitvec.c",
+      "vector.c"
+    ],
+    "vector.h": [
+      "bitvec.c",
+      "halfvec.c",
+      "hnsw.h",
+      "ivfbuild.c",
+      "ivfflat.h",
+      "ivfkmeans.c",
+      "sparsevec.c",
+      "vector.c"
+    ]
+  },
+  "cycles": [],
+  "migration_plan": {
+    "stage_0": [
+      "bitutils.h",
+      "bitvec.h",
+      "halfvec.h",
+      "sparsevec.h",
+      "vector.h"
+    ],
+    "stage_1": [
+      "bitutils.c",
+      "bitvec.c",
+      "halfutils.h",
+      "hnsw.h",
+      "ivfflat.h"
+    ],
+    "stage_2": [
+      "halfutils.c",
+      "halfvec.c",
+      "hnsw.c",
+      "hnswbuild.c",
+      "hnswinsert.c",
+      "hnswscan.c",
+      "hnswutils.c",
+      "hnswvacuum.c",
+      "ivfbuild.c",
+      "ivfflat.c",
+      "ivfinsert.c",
+      "ivfkmeans.c",
+      "ivfscan.c",
+      "ivfutils.c",
+      "ivfvacuum.c",
+      "sparsevec.c",
+      "vector.c"
+    ]
+  }
+}
