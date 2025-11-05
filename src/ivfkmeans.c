@@ -237,9 +237,11 @@ ComputeNewCenters(VectorArray samples, float *agg, VectorArray newCenters, int *
 		}
 		else
 		{
-			/* TODO Handle empty centers properly */
-			for (int k = 0; k < dimensions; k++)
-				x[k] = RandomDouble();
+/* Handle empty centers by picking a random sample */
+intrandomIndex = RandomInt() % numSamples;
+PointerrandomSample = VectorArrayGet(samples, randomIndex);
+
+memcpy(x, VARDATA_ANY(randomSample), dimensions * sizeof(float));
 		}
 	}
 
