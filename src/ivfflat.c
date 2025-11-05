@@ -175,6 +175,31 @@ ivfflatvalidate(Oid opclassoid)
  *
  * See https://www.postgresql.org/docs/current/index-api.html
  */
+
+/*
+ * Get property info
+ */
+static bool
+ivfflat_property(Oid index_oid, int attno,
+ IndexAMProperty prop, const char *propname,
+ bool *res, bool *isnull)
+{
+if (attno == 0)
+{
+switch (prop)
+{
+case AMPROP_DISTANCE_ORDERABLE:
+*res = true;
+*isnull = false;
+return true;
+default:
+break;
+}
+}
+
+return false;
+}
+
 FUNCTION_PREFIX PG_FUNCTION_INFO_V1(ivfflathandler);
 Datum
 ivfflathandler(PG_FUNCTION_ARGS)
