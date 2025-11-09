@@ -1,6 +1,6 @@
 #include "postgres.h"
 
-#include "bitutils.h"
+#include "../src_cpp/bitutils.h"
 #include "bitvec.h"
 #include "utils/varbit.h"
 #include "vector.h"
