@@ -1,6 +1,9 @@
 #ifndef HNSW_H
 #define HNSW_H
 
+/* Undefine the C-style macro to avoid compilation errors in C++ */
+#undef AssertVariableIsOfTypeMacro
+
 #include "postgres.h"
 
 #include "access/genam.h"
