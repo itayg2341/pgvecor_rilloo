@@ -30,13 +30,16 @@ endif
 # For auto-vectorization:
 # - GCC (needs -ftree-vectorize OR -O3) - https://gcc.gnu.org/projects/tree-ssa/vectorization.html
 # - Clang (could use pragma instead) - https://llvm.org/docs/Vectorizers.html
-PG_CFLAGS += $(OPTFLAGS) -ftree-vectorize -fassociative-math -fno-signed-zeros -fno-trapping-math
+PG_CXXFLAGS += -std=c++17 $(OPTFLAGS) -ftree-vectorize -fassociative-math -fno-signed-zeros -fno-trapping-math
 
 # Debug GCC auto-vectorization
-# PG_CFLAGS += -fopt-info-vec
+# PG_CXXFLAGS += -fopt-info-vec
 
 # Debug Clang auto-vectorization
-# PG_CFLAGS += -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize
+# PG_CXXFLAGS += -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize
+
+# Link C++ standard library
+SHLIB_LINK += -lstdc++
 
 all: sql/$(EXTENSION)--$(EXTVERSION).sql
 
