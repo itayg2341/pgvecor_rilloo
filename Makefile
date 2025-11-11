@@ -38,6 +38,9 @@ PG_CXXFLAGS += -std=c++17 $(OPTFLAGS) -ftree-vectorize -fassociative-math -fno-s
 # Debug Clang auto-vectorization
 # PG_CXXFLAGS += -Rpass=loop-vectorize -Rpass-analysis=loop-vectorize
 
+# C++-specific flags
+PG_CXXFLAGS += -DAssertVariableIsOfTypeMacro(varname,typename)=((void)true)
+
 # Link C++ standard library
 SHLIB_LINK += -lstdc++
 
