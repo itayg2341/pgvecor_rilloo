@@ -4,6 +4,7 @@
 #define __STDC_WANT_IEC_60559_TYPES_EXT__
 
 #include <float.h>
+#include <cstddef>
 
 /* We use two types of dispatching: intrinsics and target_clones */
 /* TODO Move to better place */
@@ -52,19 +53,21 @@
 
 #define HALFVEC_MAX_DIM 16000
 
-#define HALFVEC_SIZE(_dim)		(offsetof(HalfVector, x) + sizeof(half)*(_dim))
-#define DatumGetHalfVector(x)	((HalfVector *) PG_DETOAST_DATUM(x))
-#define PG_GETARG_HALFVEC_P(x)	DatumGetHalfVector(PG_GETARG_DATUM(x))
-#define PG_RETURN_HALFVEC_P(x)	PG_RETURN_POINTER(x)
+class HalfVector {
+public:
+    int32 vl_len_; // varlena header (do not touch directly!)
+    int16 dim;     // number of dimensions
+    int16 unused;  // reserved for future use, always zero
+    half x[1];     // flexible array member
 
-typedef struct HalfVector
-{
-	int32		vl_len_;		/* varlena header (do not touch directly!) */
-	int16		dim;			/* number of dimensions */
-	int16		unused;			/* reserved for future use, always zero */
-	half		x[FLEXIBLE_ARRAY_MEMBER];
-}			HalfVector;
+    HalfVector(int16 dim);
 
-HalfVector *InitHalfVector(int dim);
+    static size_t size(int16 dim);
+    static HalfVector* init(int16 dim);
+};
+
+#define DatumGetHalfVector(x) ((HalfVector *) PG_DETOAST_DATUM(x))
+#define PG_GETARG_HALFVEC_P(x) DatumGetHalfVector(PG_GETARG_DATUM(x))
+#define PG_RETURN_HALFVEC_P(x) PG_RETURN_POINTER(x)
 
 #endif
