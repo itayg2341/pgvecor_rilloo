@@ -20,7 +20,7 @@
 #include "vector.h"
 
 #define STATE_DIMS(x) (ARR_DIMS(x)[0] - 1)
-#define CreateStateDatums(dim) palloc(sizeof(Datum) * (dim + 1))
+#define CreateStateDatums(dim) static_cast<Datum *>(palloc(sizeof(Datum) * (dim + 1)))
 
 /*
  * Get a half from a message buffer

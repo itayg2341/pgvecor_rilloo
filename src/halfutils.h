@@ -248,7 +248,7 @@ Float4ToHalf(float num)
 
 	if (unlikely(HalfIsInf(result)) && !isinf(num))
 	{
-		char	   *buf = palloc(FLOAT_SHORTEST_DECIMAL_LEN);
+		char	   *buf = static_cast<char *>(palloc(FLOAT_SHORTEST_DECIMAL_LEN));
 
 		float_to_shortest_decimal_buf(num, buf);
 

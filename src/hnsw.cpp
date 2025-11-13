@@ -48,9 +48,9 @@ HnswInitLockTranche(void)
 	bool		found;
 
 	LWLockAcquire(AddinShmemInitLock, LW_EXCLUSIVE);
-	tranche_ids = ShmemInitStruct("hnsw LWLock ids",
+	tranche_ids = static_cast<int *>(ShmemInitStruct("hnsw LWLock ids",
 								  sizeof(int) * 1,
-								  &found);
+								  &found));
 	if (!found)
 	{
 #if PG_VERSION_NUM >= 190000
